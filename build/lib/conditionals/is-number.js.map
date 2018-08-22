@@ -1,0 +1,1 @@
+{"version":3,"file":"is-number.js","sourceRoot":"","sources":["../../../src/lib/conditionals/is-number.ts"],"names":[],"mappings":";;AAAA,+CAA4C;AAE5C,MAAa,QAAS,SAAQ,yBAAW;IAErC,YAAY,YAAY,GAAG,kBAAkB;QACzC,KAAK,CAAC,YAAY,CAAC,CAAC;IACxB,CAAC;IAEM,IAAI,CAAC,KAAU;QAClB,OAAO,OAAO,KAAK,KAAK,QAAQ,CAAC;IACrC,CAAC;CACJ;AATD,4BASC;AAEU,QAAA,QAAQ,GAAG,IAAI,QAAQ,EAAE,CAAC"}
