@@ -1,5 +1,10 @@
-af-conditionals Library
-=======================
+# af-conditionals Library
+
+## Note: v0.1.0
+
+This is the initial release version. The code has been thoroughly tested with 100% coverage. However, the packaging is still under development so a NPM module has not been published.
+
+## Description
 
 This library defines a Conditional object that is then subclassed to create standard conditional checks.
 
@@ -21,9 +26,9 @@ The majority of the conditionals use `typeof` to determine if a value is of a pa
 
 All conditionals expose the object class and a variable named after the class but starting with a lowercase letter. For example: `IsString` is exposed as is `isString`. The `isString` variable is declared with a `let` so you may subclass the object and then use your version of your class throughout your application easily.
 
-[Support Issues](https://github.com/acmeframework/af-conditionals/issues)
+## [Support Issues](https://github.com/acmeframework/af-conditionals/issues)
 
-The MIT License
+## The MIT License
 
 Copyright &copy; 2018 Acme Framework
 
