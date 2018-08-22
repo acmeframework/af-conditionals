@@ -1,5 +1,9 @@
 # af-conditionals Library
 
+## Status of Project
+
+[![Build Status](https://travis-ci.org/acmeframework/af-conditionals.svg?branch=master)](https://travis-ci.org/acmeframework/af-conditionals)
+
 ## Note: v0.1.0
 
 This is the initial release version. The code has been thoroughly tested with 100% coverage. However, the packaging is still under development so a NPM module has not been published.
