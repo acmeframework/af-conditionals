@@ -1,5 +1,6 @@
-import { expect } from "chai";
 import "mocha";
+
+import { expect } from "chai";
 
 import { Conditional } from "../../../src/lib";
 
@@ -18,7 +19,7 @@ export const testFunction = (arg1: number, arg2: number): number => {
     return arg1 + arg2;
 };
 
-export const testArray = [ "1", "2", "3", "4" ];
+export const testArray = ["1", "2", "3", "4"];
 
 export const testUndefined: any = undefined;
 
@@ -57,7 +58,7 @@ export class TestConditional {
         protected conditionalName: string,
         protected testObj: Conditional,
         protected testMap: boolean[]
-    ) {}
+    ) { }
 
     public test(): void {
         const self = this;
@@ -67,9 +68,10 @@ export class TestConditional {
             it("tests that " + this.conditionalName +
                 " tests " + testNames[i] +
                 " and resolves as " + this.testMap[i],
-            function() {
-                expect(self.testObj.test(testItems[i])).to.equal(self.testMap[i]);
-            });
+                function () {
+                    expect(self.testObj.test(testItems[i]))
+                        .to.equal(self.testMap[i]);
+                });
         }
     }
 }
