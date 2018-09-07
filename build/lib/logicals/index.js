@@ -3,8 +3,7 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(require("./comparisons"));
-__export(require("./conditionals"));
-__export(require("./logicals"));
-__export(require("./operators"));
+__export(require("./and"));
+__export(require("./logical"));
+__export(require("./or"));
 //# sourceMappingURL=index.js.map
