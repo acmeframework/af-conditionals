@@ -1,4 +1,4 @@
-import { isUsable } from "../../../src/lib";
+import { isUsableInstance } from "../../../src/lib";
 import { TestConditional } from "./conditional-tests";
 
 const testItemsResultsMap = [
@@ -16,8 +16,14 @@ const testItemsResultsMap = [
 
 describe("IsUsable class", function() {
 
-    describe("tests various values to determine if IsUsable functions properly...", function() {
-        const tc = new TestConditional("isUsable", isUsable, testItemsResultsMap);
-        tc.test();
-    });
+    describe("tests various values to determine if IsUsable functions "
+        + "properly...",
+        function() {
+            const tc = new TestConditional(
+                "isUsable",
+                isUsableInstance,
+                testItemsResultsMap
+            );
+            tc.test();
+        });
 });

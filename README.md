@@ -4,11 +4,35 @@
 
 [![Build Status](https://travis-ci.org/acmeframework/af-conditionals.svg?branch=master)](https://travis-ci.org/acmeframework/af-conditionals)  [![Coverage Status](https://coveralls.io/repos/github/acmeframework/af-conditionals/badge.svg?branch=master)](https://coveralls.io/github/acmeframework/af-conditionals?branch=master)
 
-## Note: v0.1.0
+## Release Notes:
 
-This is the initial release version. The code has been thoroughly tested with 100% coverage. However, the packaging is still under development so a NPM module has not been published.
+### v0.1.0
 
-## Description
+This is the initial alpha release version. The code has been thoroughly tested with 100% coverage. However, the packaging is still under development so a NPM module has not been published.
+
+### v0.2.0
+
+This release drastically changes the calling methods from using `XXXX.test()` methods to hiding that test within the exposed variable from which the classes are actually used. For example:
+
+In v0.1.0, you would write code like this:
+
+```javascript
+if (isUsable.test(someVar)) {
+    console.log("It is usable");
+}
+```
+
+Starting in v0.2.0, you can now simply say:
+
+```javascript
+if (isUsable(someVar)) {
+    console.log("It is usable");
+}
+```
+
+We have also move the assert method out of base classes and made it very generic across all Comparisons, Conditionals, and Logicals.
+
+## Conditional
 
 This library defines a Conditional object that is then subclassed to create standard conditional checks.
 
@@ -28,7 +52,7 @@ Supplied Conditionals are:
 
 The majority of the conditionals use `typeof` to determine if a value is of a particular type or not and use noncoerced equality to test the type.
 
-All conditionals expose the object class and a variable named after the class but starting with a lowercase letter. For example: `IsString` is exposed as is `isString`. The `isString` variable is declared with a `let` so you may subclass the object and then use your version of your class throughout your application easily.
+All Comparisons, Conditionals, Logicals, and Operators expose the object class and a variable named after the class with the work *Instance* appended, but starting with a lowercase letter. For example: `IsString` is exposed as is `isStringInstance`. The `isStringInstance` variable is declared with a `let` so you may subclass the object and then use your version of your class throughout your application easily. Additionally, we expose a function that implements the testing for the class, for example, `IsString` has a exposed function `isString` that calls `isStringInstance.test()`. *(This is described in the Release Notes for v0.2.0.)*
 
 ## [Support Issues](https://github.com/acmeframework/af-conditionals/issues)
 

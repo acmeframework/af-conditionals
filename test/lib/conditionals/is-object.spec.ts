@@ -1,4 +1,4 @@
-import { isObject } from "../../../src/lib";
+import { isObjectInstance } from "../../../src/lib";
 import { TestConditional } from "./conditional-tests";
 
 const testItemsResultsMap = [
@@ -15,8 +15,14 @@ const testItemsResultsMap = [
 ];
 
 describe("IsObject class", function() {
-    describe("tests various values to determine if IsObject functions properly...", function() {
-        const tc = new TestConditional("isObject", isObject, testItemsResultsMap);
-        tc.test();
-    });
+    describe("tests various values to determine if IsObject functions "
+        + "properly...",
+        function() {
+            const tc = new TestConditional(
+                "isObject",
+                isObjectInstance,
+                testItemsResultsMap
+            );
+            tc.test();
+        });
 });

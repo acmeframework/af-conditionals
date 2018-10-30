@@ -1,4 +1,4 @@
-import { isUndefinedOrNull } from "../../../src/lib";
+import { isUndefinedOrNullInstance } from "../../../src/lib";
 import { TestConditional } from "./conditional-tests";
 
 const testItemsResultsMap = [
@@ -16,8 +16,14 @@ const testItemsResultsMap = [
 
 describe("IsUndefinedOrNull class", function() {
 
-    describe("tests various values to determine if IsUndefinedOrNull functions properly...", function() {
-        const tc = new TestConditional("isUndefinedOrNull", isUndefinedOrNull, testItemsResultsMap);
-        tc.test();
-    });
+    describe("tests various values to determine if IsUndefinedOrNull functions "
+        + "properly...",
+        function() {
+            const tc = new TestConditional(
+                "isUndefinedOrNull",
+                isUndefinedOrNullInstance,
+                testItemsResultsMap
+            );
+            tc.test();
+        });
 });

@@ -1,17 +1,13 @@
-import { expect } from "chai";
 import "mocha";
 
-import { Conditional } from "../../../src/lib";
+import { expect } from "chai";
+
+import { assert_conditional, Conditional } from "../../../src/lib";
 
 // tslint:disable:no-unused-expression
 
 class TestConditional extends Conditional {
-    constructor(newAssertMsg = "is not defined.") {
-        super(newAssertMsg);
-    }
-
     public test(value: any): boolean {
-        // tslint:disable-next-line:no-console
         return typeof value !== "undefined";
     }
 }
@@ -22,11 +18,11 @@ describe("Conditional Class", function() {
 
         expect(tc).to.be.an.instanceof(TestConditional);
         expect(function() {
-            tc.assert("Hello");
+            assert_conditional("Hello", tc);
         }).to.not.throw();
 
         expect(function() {
-            tc.assert(undefined);
+            assert_conditional(undefined, tc);
         }).to.throw(TypeError);
     });
 });

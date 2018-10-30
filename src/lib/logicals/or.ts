@@ -1,14 +1,7 @@
 import { Conditional, isUsable } from "../conditionals";
-import { Logical } from "./logical";
+import { assert_logical, Logical, LogicalTuple } from "./logical";
 
 export class Or extends Logical {
-
-    constructor(
-        newAssertMsg = "The operands when OR'd together are not true."
-    ) {
-        super(newAssertMsg);
-    }
-
     protected stopTesting(result: boolean): boolean {
         return result;
     }
@@ -19,9 +12,20 @@ export class Or extends Logical {
         rhsValue: any,
         rhs: Conditional
     ): boolean {
-        return (isUsable.test(lhs) ? lhs!.test(lhsValue) : lhsValue)
+        return (isUsable(lhs) ? lhs!.test(lhsValue) : lhsValue)
             || rhs.test(rhsValue);
     }
 }
 
-export let or = new Or();
+export let orInstance = new Or();
+
+export function or(operands: LogicalTuple[]): boolean {
+    return orInstance.test(operands);
+}
+
+export function assert_or(
+    operands: LogicalTuple[],
+    assertMsg = "The operands when OR'd together are not true."
+): void {
+    assert_logical(operands, orInstance, assertMsg);
+}

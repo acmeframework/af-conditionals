@@ -1,4 +1,4 @@
-import { isFunction } from "../../../src/lib";
+import { isFunctionInstance } from "../../../src/lib";
 import { TestConditional } from "./conditional-tests";
 
 const testItemsResultsMap = [
@@ -15,8 +15,14 @@ const testItemsResultsMap = [
 ];
 
 describe("IsFunction class", function() {
-    describe("tests various values to determine if IsFunction functions properly...", function() {
-        const tc = new TestConditional("isFunction", isFunction, testItemsResultsMap);
-        tc.test();
-    });
+    describe("tests various values to determine if IsFunction functions "
+        + "properly...",
+        function() {
+            const tc = new TestConditional(
+                "isFunction",
+                isFunctionInstance,
+                testItemsResultsMap
+            );
+            tc.test();
+        });
 });

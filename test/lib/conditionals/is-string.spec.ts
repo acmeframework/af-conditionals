@@ -1,4 +1,4 @@
-import { isString } from "../../../src/lib";
+import { isStringInstance } from "../../../src/lib";
 import { TestConditional } from "./conditional-tests";
 
 const testItemsResultsMap = [
@@ -16,8 +16,14 @@ const testItemsResultsMap = [
 
 describe("IsString class", function() {
 
-    describe("tests various values to determine if IsString functions properly...", function() {
-        const tc = new TestConditional("isString", isString, testItemsResultsMap);
-        tc.test();
-    });
+    describe("tests various values to determine if IsString functions "
+        + "properly...",
+        function() {
+            const tc = new TestConditional(
+                "isString",
+                isStringInstance,
+                testItemsResultsMap
+            );
+            tc.test();
+        });
 });

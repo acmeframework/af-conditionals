@@ -1,19 +1,15 @@
-import { Conditional } from "./conditional";
+import { assert_conditional, Conditional } from "./conditional";
 import { isNumber } from "./is-number";
 import { isString } from "./is-string";
 import { isUsable } from "./is-usable";
 
 export class IsEmpty extends Conditional {
 
-    constructor(newAssertMsg = "is not empty") {
-        super(newAssertMsg);
-    }
-
     public test(value: any): boolean {
-        if (!isUsable.test(value)) return true;
-        if (isString.test(value)) {
+        if (!isUsable(value)) return true;
+        if (isString(value)) {
             return this.isStringEmpty(value);
-        } else if (isNumber.test(value)) {
+        } else if (isNumber(value)) {
             return this.isNumberEmpty(value);
         } else {
             return !Boolean(value);
@@ -29,4 +25,15 @@ export class IsEmpty extends Conditional {
     }
 }
 
-export let isEmpty = new IsEmpty();
+export let isEmptyInstance = new IsEmpty();
+
+export function isEmpty(value: any): boolean {
+    return isEmptyInstance.test(value);
+}
+
+export function assert_isEmpty(
+    value: any,
+    assertMsg = "is not empty."
+): void {
+    assert_conditional(value, isEmptyInstance, assertMsg);
+}

@@ -1,4 +1,4 @@
-import { isEmpty } from "../../../src/lib";
+import { isEmptyInstance } from "../../../src/lib";
 import { TestConditional } from "./conditional-tests";
 
 const testItemsResultsMap = [
@@ -16,8 +16,14 @@ const testItemsResultsMap = [
 
 describe("IsEmpty class", function() {
 
-    describe("tests various values to determine if IsEmpty functions properly...", function() {
-        const tc = new TestConditional("isEmpty", isEmpty, testItemsResultsMap);
-        tc.test();
-    });
+    describe("tests various values to determine if IsEmpty functions "
+        + "properly...",
+        function() {
+            const tc = new TestConditional(
+                "isEmpty",
+                isEmptyInstance,
+                testItemsResultsMap
+            );
+            tc.test();
+        });
 });

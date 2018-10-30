@@ -1,11 +1,6 @@
-import { Conditional } from "./conditional";
+import { assert_conditional, Conditional } from "./conditional";
 
 export class IsArray extends Conditional {
-
-    constructor(newAssertMsg = "is not an array.") {
-        super(newAssertMsg);
-    }
-
     public test(value: any): boolean {
         return typeof value !== "undefined" &&
             value !== null &&
@@ -13,4 +8,15 @@ export class IsArray extends Conditional {
     }
 }
 
-export let isArray = new IsArray();
+export let isArrayInstance = new IsArray();
+
+export function isArray(value: any): boolean {
+    return isArrayInstance.test(value);
+}
+
+export function assert_isArray(
+    value: any,
+    assertMsg: string = "is not an array."
+): void {
+    assert_conditional(value, isArrayInstance, assertMsg);
+}

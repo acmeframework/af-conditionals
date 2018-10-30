@@ -3,12 +3,12 @@ import "mocha";
 import { expect } from "chai";
 
 import {
+    assert_comparison,
     COMPARE_EQUAL,
     COMPARE_GREATER_THAN,
     COMPARE_LESS_THAN,
     Comparison,
 } from "../../../src/lib";
-
 
 class TestObject {
     constructor(protected aValue: string) { }
@@ -20,15 +20,16 @@ class TestObject {
 
 type TestItem = any[];
 
-describe("Tests the Comparison class", function () {
-    describe("Tests the construction of the class", function () {
-        it("instantiates the class", function () {
-            expect(new Comparison("Ahhhhh... it all went to hell"))
-                .to.be.an.instanceof(Comparison);
+// tslint:disable:no-unused-expression
+
+describe("Tests the Comparison class", function() {
+    describe("Tests the construction of the class", function() {
+        it("instantiates the class", function() {
+            expect(new Comparison()).to.be.an.instanceof(Comparison);
         });
     });
 
-    describe("Tests the functionality of the class", function () {
+    describe("Tests the functionality of the class", function() {
         const TEST_STRING_1 = "abcd";
         const TEST_STRING_2 = "bcde";
         const TEST_STRING_3 = "ABCD";
@@ -48,10 +49,10 @@ describe("Tests the Comparison class", function () {
         const TEST_ARRAY_1 = [TEST_OBJECT_1, TEST_OBJECT_2];
         const TEST_ARRAY_2 = [TEST_OBJECT_1, TEST_OBJECT_2, TEST_OBJECT_3];
 
-        const TEST_FUNCTION_1 = () => { return; }
-        const TEST_FUNCTION_2 = () => { return; }
+        const TEST_FUNCTION_1 = () => { return; };
+        const TEST_FUNCTION_2 = () => { return; };
 
-        const c = new Comparison("It all went to hell.");
+        const c = new Comparison();
 
         const equalComparisons: TestItem[] = [
             ["strings", TEST_STRING_1, TEST_STRING_1],
@@ -63,10 +64,11 @@ describe("Tests the Comparison class", function () {
         ];
 
         equalComparisons.forEach((testItems: TestItem) => {
-            it("using compare, tests " + testItems[0] + " for equality", function () {
-                expect(c.compare(testItems[1], testItems[2]))
-                    .to.eq(COMPARE_EQUAL);
-            });
+            it("using compare, tests " + testItems[0] + " for equality",
+                function() {
+                    expect(c.compare(testItems[1], testItems[2]))
+                        .to.eq(COMPARE_EQUAL);
+                });
         });
 
         const greaterThanComparisons: TestItem[] = [
@@ -79,10 +81,11 @@ describe("Tests the Comparison class", function () {
         ];
 
         greaterThanComparisons.forEach((testItems: TestItem) => {
-            it("using compare, tests " + testItems[0] + " for greater than", function () {
-                expect(c.compare(testItems[1], testItems[2]))
-                    .to.eq(COMPARE_GREATER_THAN);
-            });
+            it("using compare, tests " + testItems[0] + " for greater than",
+                function() {
+                    expect(c.compare(testItems[1], testItems[2]))
+                        .to.eq(COMPARE_GREATER_THAN);
+                });
         });
 
         const lessThanComparisons: TestItem[] = [
@@ -95,13 +98,14 @@ describe("Tests the Comparison class", function () {
         ];
 
         lessThanComparisons.forEach((testItems: TestItem) => {
-            it("using compare, tests " + testItems[0] + " for less than", function () {
-                expect(c.compare(testItems[1], testItems[2]))
-                    .to.eq(COMPARE_LESS_THAN);
-            });
+            it("using compare, tests " + testItems[0] + " for less than",
+                function() {
+                    expect(c.compare(testItems[1], testItems[2]))
+                        .to.eq(COMPARE_LESS_THAN);
+                });
         });
 
-        it("tests outside cases", function () {
+        it("tests outside cases", function() {
             expect(c.compare(TEST_FUNCTION_1, TEST_FUNCTION_1))
                 .to.eq(COMPARE_EQUAL);
 
@@ -109,13 +113,18 @@ describe("Tests the Comparison class", function () {
                 .to.not.eq(COMPARE_EQUAL);
         });
 
-        it("uses assert/test to test comparisons", function () {
-            expect(function () {
-                c.assert(TEST_STRING_1, TEST_STRING_1);
+        it("uses assert/test to test comparisons", function() {
+            expect(function() {
+                assert_comparison(TEST_STRING_1, TEST_STRING_1, c);
             }).to.not.throw();
 
-            expect(function () {
-                c.assert(TEST_STRING_1, TEST_STRING_2, COMPARE_EQUAL);
+            expect(function() {
+                assert_comparison(
+                    TEST_STRING_1,
+                    TEST_STRING_2,
+                    c,
+                    [COMPARE_EQUAL]
+                );
             }).to.throw(TypeError);
 
             expect(c.test(TEST_STRING_1, TEST_STRING_1))

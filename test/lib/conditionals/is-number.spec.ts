@@ -1,4 +1,4 @@
-import { isNumber } from "../../../src/lib";
+import { isNumberInstance } from "../../../src/lib";
 import { TestConditional } from "./conditional-tests";
 
 const testItemsResultsMap = [
@@ -16,8 +16,14 @@ const testItemsResultsMap = [
 
 describe("IsNumber class", function() {
 
-    describe("tests various values to determine if IsNumber functions properly...", function() {
-        const tc = new TestConditional("isNumber", isNumber, testItemsResultsMap);
-        tc.test();
-    });
+    describe("tests various values to determine if IsNumber functions "
+        + "properly...",
+        function() {
+            const tc = new TestConditional(
+                "isNumber",
+                isNumberInstance,
+                testItemsResultsMap
+            );
+            tc.test();
+        });
 });

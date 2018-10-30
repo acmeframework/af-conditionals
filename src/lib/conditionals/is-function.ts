@@ -1,16 +1,22 @@
-import { Conditional } from "./conditional";
+import { assert_conditional, Conditional } from "./conditional";
 import { isUsable } from "./is-usable";
 
 export class IsFunction extends Conditional {
-
-    constructor(newAssertMsg = "is not a function.") {
-        super(newAssertMsg);
-    }
-
     public test(value: any): boolean {
-        return isUsable.test(value) &&
+        return isUsable(value) &&
             typeof value === "function";
     }
 }
 
-export let isFunction = new IsFunction();
+export let isFunctionInstance = new IsFunction();
+
+export function isFunction(value: any): boolean {
+    return isFunctionInstance.test(value);
+}
+
+export function assert_isFunction(
+    value: any,
+    assertMsg = "is not a Function."
+): void {
+    assert_conditional(value, isFunctionInstance, assertMsg);
+}

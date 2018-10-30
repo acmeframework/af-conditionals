@@ -7,24 +7,16 @@ export interface LogicalTuple {
 
 export abstract class Logical {
 
-    constructor(protected assertMsg: string) { }
-
-    public assert(operands: LogicalTuple[]): void {
-        if (!this.test(operands)) {
-            throw new TypeError(this.assertMsg);
-        }
-    }
-
     public test(operands: LogicalTuple[]): boolean {
-        if (!isArray.test(operands) || operands.length < 2) {
+        if (!isArray(operands) || operands.length < 2) {
             throw new TypeError(
                 "A logical test requires at least two operands to test."
             );
         }
-        if (!isUsable.test(operands[0].value)) {
+        if (!isUsable(operands[0].value)) {
             throw new TypeError(
                 "You must supply at least one usable values to test."
-            )
+            );
         }
 
         const defaultValue = operands[0].value;
@@ -53,4 +45,14 @@ export abstract class Logical {
         rhsValue: any,
         rhs: Conditional
     ): boolean;
+}
+
+export function assert_logical(
+    operands: LogicalTuple[],
+    l: Logical,
+    assertMsg = "Your logical assertion is not true."
+): void {
+    if (!l.test(operands)) {
+        throw new TypeError(assertMsg);
+    }
 }

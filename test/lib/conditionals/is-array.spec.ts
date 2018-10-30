@@ -1,4 +1,4 @@
-import { isArray } from "../../../src/lib";
+import { isArrayInstance } from "../../../src/lib";
 import { TestConditional } from "./conditional-tests";
 
 const testItemsResultsMap = [
@@ -15,8 +15,14 @@ const testItemsResultsMap = [
 ];
 
 describe("IsArray class", function() {
-    describe("tests various values to determine if IsArry functions properly...", function() {
-        const tc = new TestConditional("isArray", isArray, testItemsResultsMap);
-        tc.test();
-    });
+    describe("tests various values to determine if IsArry functions "
+        + "properly...",
+        function() {
+            const tc = new TestConditional(
+                "isArray",
+                isArrayInstance,
+                testItemsResultsMap
+            );
+            tc.test();
+        });
 });

@@ -3,95 +3,93 @@ import "mocha";
 import { expect } from "chai";
 
 import {
+    assert_logical,
     Conditional,
-    isEmpty,
-    isString,
+    isEmptyInstance,
+    isStringInstance,
     isUsable,
+    isUsableInstance,
     Logical,
 } from "../../../src/lib";
 
 // tslint:disable:no-unused-expression
 
 class TestLogical extends Logical {
-    constructor(newAssertMsg = "is not logical.") {
-        super(newAssertMsg);
-    }
-
     protected _test(
         lhsValue: any,
         lhs: Conditional | undefined,
         rhsValue: any,
         rhs: Conditional
     ): boolean {
-        return (isUsable.test(lhs) ? lhs!.test(lhsValue) : lhsValue)
+        return (isUsable(lhs) ? lhs!.test(lhsValue) : lhsValue)
             && rhs.test(rhsValue);
     }
 }
 
-describe("Logical Class", function () {
-    describe("Tests the functionality of the class", function () {
-        it("Tests the assert/test methods", function () {
+describe("Logical Class", function() {
+    describe("Tests the functionality of the class", function() {
+        it("Tests the assert/test methods", function() {
             const tl = new TestLogical();
 
             expect(tl).to.be.an.instanceof(TestLogical);
-            expect(function () {
-                tl.assert([
+            expect(function() {
+                assert_logical([
                     {
-                        condition: isUsable,
+                        condition: isUsableInstance,
                         value: "Hello"
                     },
                     {
-                        condition: isString
+                        condition: isStringInstance
                     }
-                ]);
+                ], tl, "What???");
             }).to.not.throw();
 
-            expect(function () {
-                tl.assert([
+            expect(function() {
+                assert_logical([
                     {
-                        condition: isUsable,
+                        condition: isUsableInstance,
                         value: undefined
                     },
                     {
-                        condition: isEmpty
+                        condition: isEmptyInstance
                     }
-                ]);
+                ], tl);
             }).to.throw(TypeError);
 
-            expect(function () {
-                tl.assert([
+            expect(function() {
+                assert_logical([
                     {
-                        condition: isUsable,
+                        condition: isUsableInstance,
                         value: "Hello"
                     },
                     {
-                        condition: isEmpty
+                        condition: isEmptyInstance
                     }
-                ]);
+                ], tl);
             }).to.throw(TypeError);
 
-            expect(function () {
-                tl.assert([
+            expect(function() {
+                assert_logical([
                     {
-                        condition: isUsable,
+                        condition: isUsableInstance,
                         value: "Hello"
                     },
                     {
-                        condition: isString
+                        condition: isStringInstance
                     },
                     {
-                        condition: isEmpty
+                        condition: isEmptyInstance
                     }
-                ]);
+                ], tl);
             }).to.throw(TypeError);
 
-            expect(function () {
-                tl.assert([]);
+            expect(function() {
+                assert_logical([], tl);
             }).to.throw(TypeError);
 
-            expect(function () {
-                //@ts-ignore
-                tl.assert("Nope");
+            expect(function() {
+                // @ts-ignore
+                assert_logical("Nope", tl);
             }).to.throw(TypeError);
         });
     });

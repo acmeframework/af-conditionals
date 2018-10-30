@@ -2,38 +2,43 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { isEmpty, isFunction, isNumber, isString, or } from "../../../src/lib";
+import {
+    assert_or,
+    isEmptyInstance,
+    isFunctionInstance,
+    isNumberInstance,
+    isStringInstance,
+} from "../../../src/lib";
 
-
-describe("Tests logical Or class", function () {
-    describe("Tests the functionality of the class", function () {
-        it("tests the assert/test methods", function () {
-            expect(function () {
-                or.assert([
+describe("Tests logical Or class", function() {
+    describe("Tests the functionality of the class", function() {
+        it("tests the assert/test methods", function() {
+            expect(function() {
+                assert_or([
                     {
-                        condition: isNumber,
+                        condition: isNumberInstance,
                         value: "Hello"
                     },
                     {
-                        condition: isString
+                        condition: isStringInstance
                     }
-                ])
+                ]);
             }).to.not.throw();
 
-            expect(function () {
-                or.assert([
+            expect(function() {
+                assert_or([
                     {
-                        condition: isEmpty,
+                        condition: isEmptyInstance,
                         value: "Hello"
                     },
                     {
-                        condition: isNumber
+                        condition: isNumberInstance
                     },
                     {
-                        condition: isFunction
+                        condition: isFunctionInstance
                     }
                 ]);
             }).to.throw(TypeError);
         });
-    })
+    });
 });

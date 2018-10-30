@@ -4,28 +4,18 @@ export const COMPARE_EQUAL = 0;
 export const COMPARE_GREATER_THAN = 1;
 export const COMPARE_LESS_THAN = -1;
 
+type StringOrNumber = string | number;
+
 export class Comparison {
-
-    constructor(
-        protected assertMsg = "Comparison did not meet expectations."
-    ) { }
-
-    public assert(value1: any, value2: any, expectedResult?: number): void {
-        expectedResult = expectedResult || COMPARE_EQUAL;
-        if (this.compare(value1, value2) !== expectedResult) {
-            throw new TypeError(this.assertMsg);
-        }
-    }
-
-    public compare(value1: any, value2: any): number {
+    public compare(value1: any, value2: any, strict = true): number {
         if (typeof value1 === typeof value2) {
-            if (isString.test(value1) || isNumber.test(value1)) {
-                return this._compareBasic(value1, value2);
+            if (isString(value1) || isNumber(value1)) {
+                return this._compareBasic(value1, value2, strict);
             } else if (typeof value1 === "boolean") {
                 return this._compareBoolean(value1, value2);
-            } else if (isObject.test(value1)) {
+            } else if (isObject(value1)) {
                 return this._compareObject(value1, value2);
-            } else if (isArray.test(value1)) {
+            } else if (isArray(value1)) {
                 return this._compareArray(value1, value2);
             }
         }
@@ -34,23 +24,45 @@ export class Comparison {
         return this._compareDifferentTypes(value1, value2);
     }
 
-    public test(value1: any, value2: any, expectedResult?: number): boolean {
-        expectedResult = expectedResult || COMPARE_EQUAL;
-        return this.compare(value1, value2) === expectedResult;
+    public test(
+        value1: any,
+        value2: any,
+        expectedResult?: number | number[],
+        strict = true
+    ): boolean {
+        expectedResult = expectedResult || [COMPARE_EQUAL];
+        if (!isArray(expectedResult)) {
+            expectedResult = [(expectedResult as number)];
+        }
+        const result = this.compare(value1, value2, strict);
+        let expected = false;
+        // tslint:disable-next-line
+        for (const aResult of (expectedResult as Array<number>)) {
+            expected = expected || result === aResult;
+            if (expected) break;
+        }
+        return expected;
     }
 
-    protected _compareArray(value1: Array<any>, value2: Array<any>): number {
+    protected _compareArray<T = any>(value1: T[], value2: T[]): number {
         if (value1.length === value2.length) return COMPARE_EQUAL;
         if (value1.length > value2.length) return COMPARE_GREATER_THAN;
         return COMPARE_LESS_THAN;
     }
 
     protected _compareBasic(
-        value1: string | number,
-        value2: string | number
+        value1: StringOrNumber,
+        value2: StringOrNumber,
+        strict = true
     ): number {
-        if (value1 === value2) return COMPARE_EQUAL;
-        if (value1 > value2) return COMPARE_GREATER_THAN;
+        let testValue1 = value1;
+        let testValue2 = value2;
+        if (isString(value1) && !strict) {
+            testValue1 = (value1 as string).toLocaleLowerCase();
+            testValue2 = (value2 as string).toLocaleLowerCase();
+        }
+        if (testValue1 === testValue2) return COMPARE_EQUAL;
+        if (testValue1 > testValue2) return COMPARE_GREATER_THAN;
         return COMPARE_LESS_THAN;
     }
 
@@ -61,6 +73,7 @@ export class Comparison {
     }
 
     protected _compareDifferentTypes(value1: any, value2: any): number {
+        // tslint:disable-next-line:triple-equals
         if (value1 == value2) return COMPARE_EQUAL;
         if (value1 > value2) return COMPARE_GREATER_THAN;
         return COMPARE_LESS_THAN;
@@ -72,5 +85,23 @@ export class Comparison {
         if (_value1 === _value2) return COMPARE_EQUAL;
         if (_value1 > _value2) return COMPARE_GREATER_THAN;
         return COMPARE_LESS_THAN;
+    }
+}
+
+export let comparisonInstance = new Comparison();
+
+export function compare(value1: any, value2: any, strict = true): number {
+    return comparisonInstance.compare(value1, value2, strict);
+}
+
+export function assert_comparison(
+    value1: any,
+    value2: any,
+    c: Comparison,
+    expectedResult?: number | number[],
+    assertMsg = "Comparison did not meet expectations."
+): void {
+    if (!c.test(value1, value2, expectedResult)) {
+        throw new TypeError(assertMsg);
     }
 }

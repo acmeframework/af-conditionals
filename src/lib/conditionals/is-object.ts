@@ -1,19 +1,26 @@
-import { Conditional } from "./conditional";
+import { assert_conditional, Conditional } from "./conditional";
 import { isArray } from "./is-array";
 import { isFunction } from "./is-function";
 import { isUsable } from "./is-usable";
 
 export class IsObject extends Conditional {
-    constructor(newAssertMsg = "is not an object.") {
-        super(newAssertMsg);
-    }
-
     public test(value: any): boolean {
-        return isUsable.test(value) &&
+        return isUsable(value) &&
             typeof value === "object" &&
-            !isFunction.test(value) &&
-            !isArray.test(value);
+            !isFunction(value) &&
+            !isArray(value);
     }
 }
 
-export let isObject = new IsObject();
+export let isObjectInstance = new IsObject();
+
+export function isObject(value: any): boolean {
+    return isObjectInstance.test(value);
+}
+
+export function assert_isObject(
+    value: any,
+    assertMsg = "is not an Object."
+): void {
+    assert_conditional(value, isObjectInstance, assertMsg);
+}

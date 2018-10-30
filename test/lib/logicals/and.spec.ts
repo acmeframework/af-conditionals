@@ -2,38 +2,42 @@ import "mocha";
 
 import { expect } from "chai";
 
-import { and, isEmpty, isString, isUsable } from "../../../src/lib";
+import {
+    assert_and,
+    isEmptyInstance,
+    isStringInstance,
+    isUsableInstance,
+} from "../../../src/lib";
 
-
-describe("Tests logical And class", function () {
-    describe("Tests the functionality of the class", function () {
-        it("tests the assert/test methods", function () {
-            expect(function () {
-                and.assert([
+describe("Tests logical And class", function() {
+    describe("Tests the functionality of the class", function() {
+        it("tests the assert/test methods", function() {
+            expect(function() {
+                assert_and([
                     {
-                        condition: isUsable,
+                        condition: isUsableInstance,
                         value: "Hello"
                     },
                     {
-                        condition: isString
+                        condition: isStringInstance
                     }
-                ])
+                ]);
             }).to.not.throw();
 
-            expect(function () {
-                and.assert([
+            expect(function() {
+                assert_and([
                     {
-                        condition: isUsable,
+                        condition: isUsableInstance,
                         value: "Hello"
                     },
                     {
-                        condition: isString
+                        condition: isStringInstance
                     },
                     {
-                        condition: isEmpty
+                        condition: isEmptyInstance
                     }
                 ]);
             }).to.throw(TypeError);
         });
-    })
+    });
 });

@@ -1,23 +1,27 @@
 import { Conditional, isUsable } from "../conditionals";
-import { Logical } from "./logical";
+import { assert_logical, Logical, LogicalTuple } from "./logical";
 
 export class And extends Logical {
-
-    constructor(
-        newAssertMsg = "The operands when AND'd together are not true"
-    ) {
-        super(newAssertMsg);
-    }
-
     protected _test(
         lhsValue: any,
         lhs: Conditional | undefined,
         rhsValue: any,
         rhs: Conditional
     ): boolean {
-        return (isUsable.test(lhs) ? lhs!.test(lhsValue) : lhsValue)
+        return (isUsable(lhs) ? lhs!.test(lhsValue) : lhsValue)
             && rhs.test(rhsValue);
     }
 }
 
-export let and = new And();
+export let andInstance = new And();
+
+export function and(operands: LogicalTuple[]): boolean {
+    return andInstance.test(operands);
+}
+
+export function assert_and(
+    operands: LogicalTuple[],
+    assertMsg = "The operands when AND'd together are not true"
+): void {
+    assert_logical(operands, andInstance, assertMsg);
+}
