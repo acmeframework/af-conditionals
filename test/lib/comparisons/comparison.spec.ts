@@ -4,6 +4,7 @@ import { expect } from "chai";
 
 import {
     assert_comparison,
+    compare,
     COMPARE_EQUAL,
     COMPARE_GREATER_THAN,
     COMPARE_LESS_THAN,
@@ -113,6 +114,13 @@ describe("Tests the Comparison class", function() {
                 .to.not.eq(COMPARE_EQUAL);
         });
 
+        it("tests that strings are properly handled when strict is false",
+            function() {
+                expect(c.compare(TEST_STRING_1, TEST_STRING_2, false))
+                    .to.eq(COMPARE_LESS_THAN);
+            }
+        );
+
         it("uses assert/test to test comparisons", function() {
             expect(function() {
                 assert_comparison(TEST_STRING_1, TEST_STRING_1, c);
@@ -132,6 +140,12 @@ describe("Tests the Comparison class", function() {
 
             expect(c.test(TEST_STRING_1, TEST_STRING_2, COMPARE_EQUAL))
                 .to.be.false;
+        });
+
+        it("uses compare (function) to test comparisons", function() {
+            expect(compare(TEST_STRING_1, TEST_STRING_1)).to.eq(COMPARE_EQUAL);
+            expect(compare(TEST_STRING_1, TEST_STRING_2, false))
+                .to.eq(COMPARE_LESS_THAN);
         });
     });
 });

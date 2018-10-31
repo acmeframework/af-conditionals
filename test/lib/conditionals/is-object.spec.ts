@@ -1,5 +1,7 @@
-import { isObjectInstance } from "../../../src/lib";
-import { TestConditional } from "./conditional-tests";
+import { expect } from "chai";
+
+import { assert_isObject, isObjectInstance } from "../../../src/lib";
+import { TestConditional, testObject, testString } from "./conditional-tests";
 
 const testItemsResultsMap = [
     false, // string
@@ -24,5 +26,16 @@ describe("IsObject class", function() {
                 testItemsResultsMap
             );
             tc.test();
-        });
+
+            it("uses assert_isObject to test", function() {
+                expect(function() {
+                    assert_isObject(testObject);
+                }).to.not.throw();
+
+                expect(function() {
+                    assert_isObject(testString);
+                }).to.throw(TypeError);
+            });
+        }
+    );
 });

@@ -1,5 +1,7 @@
-import { isStringInstance } from "../../../src/lib";
-import { TestConditional } from "./conditional-tests";
+import { expect } from "chai";
+
+import { assert_isString, isStringInstance } from "../../../src/lib";
+import { TestConditional, testNumber, testString } from "./conditional-tests";
 
 const testItemsResultsMap = [
     true,  // string
@@ -25,5 +27,16 @@ describe("IsString class", function() {
                 testItemsResultsMap
             );
             tc.test();
-        });
+
+            it("uses assert_isString to test", function() {
+                expect(function() {
+                    assert_isString(testString);
+                }).to.not.throw();
+
+                expect(function() {
+                    assert_isString(testNumber);
+                }).to.throw(TypeError);
+            });
+        }
+    );
 });

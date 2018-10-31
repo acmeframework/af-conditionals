@@ -1,5 +1,12 @@
-import { isUsableInstance } from "../../../src/lib";
-import { TestConditional } from "./conditional-tests";
+import { expect } from "chai";
+
+import { assert_isUsable, isUsableInstance } from "../../../src/lib";
+import {
+    TestConditional,
+    testNull,
+    testString,
+    testUndefined,
+} from "./conditional-tests";
 
 const testItemsResultsMap = [
     true,  // string
@@ -25,5 +32,20 @@ describe("IsUsable class", function() {
                 testItemsResultsMap
             );
             tc.test();
-        });
+
+            it("uses assert_isUsable to test", function() {
+                expect(function() {
+                    assert_isUsable(testString);
+                }).to.not.throw();
+
+                expect(function() {
+                    assert_isUsable(testUndefined);
+                }).to.throw(TypeError);
+
+                expect(function() {
+                    assert_isUsable(testNull);
+                }).to.throw(TypeError);
+            });
+        }
+    );
 });

@@ -1,5 +1,7 @@
-import { isArrayInstance } from "../../../src/lib";
-import { TestConditional } from "./conditional-tests";
+import { expect } from "chai";
+
+import { assert_isArray, isArrayInstance } from "../../../src/lib";
+import { testArray, TestConditional, testString } from "./conditional-tests";
 
 const testItemsResultsMap = [
     false, // string
@@ -24,5 +26,16 @@ describe("IsArray class", function() {
                 testItemsResultsMap
             );
             tc.test();
-        });
+
+            it("uses assert_isArray to test", function() {
+                expect(function() {
+                    assert_isArray(testArray);
+                }).to.not.throw();
+
+                expect(function() {
+                    assert_isArray(testString);
+                }).to.throw(TypeError);
+            });
+        }
+    );
 });

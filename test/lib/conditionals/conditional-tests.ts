@@ -68,7 +68,7 @@ export class TestConditional {
             it("tests that " + this.conditionalName +
                 " tests " + testNames[i] +
                 " and resolves as " + this.testMap[i],
-                function () {
+                function() {
                     expect(self.testObj.test(testItems[i]))
                         .to.equal(self.testMap[i]);
                 });

@@ -1,5 +1,15 @@
-import { isUndefinedOrNullInstance } from "../../../src/lib";
-import { TestConditional } from "./conditional-tests";
+import { expect } from "chai";
+
+import {
+    assert_isUndefinedOrNull,
+    isUndefinedOrNullInstance,
+} from "../../../src/lib";
+import {
+    TestConditional,
+    testNull,
+    testString,
+    testUndefined,
+} from "./conditional-tests";
 
 const testItemsResultsMap = [
     false, // string
@@ -25,5 +35,20 @@ describe("IsUndefinedOrNull class", function() {
                 testItemsResultsMap
             );
             tc.test();
-        });
+
+            it("uses assert_isUndefinedOrNull to test", function() {
+                expect(function() {
+                    assert_isUndefinedOrNull(testUndefined);
+                }).to.not.throw();
+
+                expect(function() {
+                    assert_isUndefinedOrNull(testNull);
+                }).to.not.throw();
+
+                expect(function() {
+                    assert_isUndefinedOrNull(testString);
+                }).to.throw(TypeError);
+            });
+        }
+    );
 });

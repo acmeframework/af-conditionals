@@ -8,7 +8,10 @@ import {
     isFunctionInstance,
     isNumberInstance,
     isStringInstance,
+    or,
 } from "../../../src/lib";
+
+// tslint:disable:no-unused-expression
 
 describe("Tests logical Or class", function() {
     describe("Tests the functionality of the class", function() {
@@ -39,6 +42,19 @@ describe("Tests logical Or class", function() {
                     }
                 ]);
             }).to.throw(TypeError);
+        });
+
+        it("tests using the or function", function() {
+            expect(or([
+                {
+                    condition: isNumberInstance,
+                    value: "Hello"
+                },
+                {
+                    condition: isStringInstance
+                }
+            ])
+            ).to.be.true;
         });
     });
 });

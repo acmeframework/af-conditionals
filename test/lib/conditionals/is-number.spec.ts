@@ -1,5 +1,7 @@
-import { isNumberInstance } from "../../../src/lib";
-import { TestConditional } from "./conditional-tests";
+import { expect } from "chai";
+
+import { assert_isNumber, isNumberInstance } from "../../../src/lib";
+import { TestConditional, testNumber, testString } from "./conditional-tests";
 
 const testItemsResultsMap = [
     false, // string
@@ -25,5 +27,16 @@ describe("IsNumber class", function() {
                 testItemsResultsMap
             );
             tc.test();
-        });
+
+            it("uses assert_isNumber to test", function() {
+                expect(function() {
+                    assert_isNumber(testNumber);
+                }).to.not.throw();
+
+                expect(function() {
+                    assert_isNumber(testString);
+                }).to.throw(TypeError);
+            });
+        }
+    );
 });
