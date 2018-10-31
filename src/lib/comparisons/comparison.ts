@@ -53,7 +53,7 @@ export class Comparison {
     protected _compareBasic(
         value1: StringOrNumber,
         value2: StringOrNumber,
-        strict = true
+        strict: boolean
     ): number {
         let testValue1 = value1;
         let testValue2 = value2;
