@@ -10,7 +10,7 @@ export let isUndefinedOrNullInstance = new IsUndefinedOrNull();
 
 export function isUndefinedOrNull(value: any): boolean {
     return isUndefinedOrNullInstance.test(value);
-};
+}
 
 export function assert_isUndefinedOrNull(
     value: any,

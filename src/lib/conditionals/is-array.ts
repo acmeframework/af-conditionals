@@ -16,7 +16,7 @@ export function isArray(value: any): boolean {
 
 export function assert_isArray(
     value: any,
-    assertMsg: string = "is not an array."
+    assertMsg = "is not an array."
 ): void {
     assert_conditional(value, isArrayInstance, assertMsg);
 }
