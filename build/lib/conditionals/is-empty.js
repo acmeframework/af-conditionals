@@ -5,16 +5,13 @@ const is_number_1 = require("./is-number");
 const is_string_1 = require("./is-string");
 const is_usable_1 = require("./is-usable");
 class IsEmpty extends conditional_1.Conditional {
-    constructor(newAssertMsg = "is not empty") {
-        super(newAssertMsg);
-    }
     test(value) {
-        if (!is_usable_1.isUsable.test(value))
+        if (!is_usable_1.isUsable(value))
             return true;
-        if (is_string_1.isString.test(value)) {
+        if (is_string_1.isString(value)) {
             return this.isStringEmpty(value);
         }
-        else if (is_number_1.isNumber.test(value)) {
+        else if (is_number_1.isNumber(value)) {
             return this.isNumberEmpty(value);
         }
         else {
@@ -29,5 +26,13 @@ class IsEmpty extends conditional_1.Conditional {
     }
 }
 exports.IsEmpty = IsEmpty;
-exports.isEmpty = new IsEmpty();
+exports.isEmptyInstance = new IsEmpty();
+function isEmpty(value) {
+    return exports.isEmptyInstance.test(value);
+}
+exports.isEmpty = isEmpty;
+function assert_isEmpty(value, assertMsg = "is not empty.") {
+    conditional_1.assert_conditional(value, exports.isEmptyInstance, assertMsg);
+}
+exports.assert_isEmpty = assert_isEmpty;
 //# sourceMappingURL=is-empty.js.map

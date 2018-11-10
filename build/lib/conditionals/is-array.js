@@ -2,9 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const conditional_1 = require("./conditional");
 class IsArray extends conditional_1.Conditional {
-    constructor(newAssertMsg = "is not an array.") {
-        super(newAssertMsg);
-    }
     test(value) {
         return typeof value !== "undefined" &&
             value !== null &&
@@ -12,5 +9,13 @@ class IsArray extends conditional_1.Conditional {
     }
 }
 exports.IsArray = IsArray;
-exports.isArray = new IsArray();
+exports.isArrayInstance = new IsArray();
+function isArray(value) {
+    return exports.isArrayInstance.test(value);
+}
+exports.isArray = isArray;
+function assert_isArray(value, assertMsg = "is not an array.") {
+    conditional_1.assert_conditional(value, exports.isArrayInstance, assertMsg);
+}
+exports.assert_isArray = assert_isArray;
 //# sourceMappingURL=is-array.js.map

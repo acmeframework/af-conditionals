@@ -7,5 +7,9 @@ class Not extends unary_operator_1.UnaryOperator {
     }
 }
 exports.Not = Not;
-exports.not = new Not();
+exports.notInstance = new Not();
+function not(value) {
+    return exports.notInstance.apply(value);
+}
+exports.not = not;
 //# sourceMappingURL=not.js.map

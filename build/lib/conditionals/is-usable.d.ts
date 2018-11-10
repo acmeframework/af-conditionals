@@ -1,6 +1,7 @@
 import { Conditional } from "./conditional";
 export declare class IsUsable extends Conditional {
-    constructor(newAssertMsg?: string);
     test(value: any): boolean;
 }
-export declare let isUsable: IsUsable;
+export declare let isUsableInstance: IsUsable;
+export declare function isUsable(value: any): boolean;
+export declare function assert_isUsable(value: any, assertMsg?: string): void;

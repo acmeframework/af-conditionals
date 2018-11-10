@@ -1,6 +1,4 @@
 export declare abstract class Conditional {
-    protected assertMsg: string;
-    constructor(assertMsg: string);
-    assert(value: any): void;
     abstract test(value: any): boolean;
 }
+export declare function assert_conditional(value: any, c: Conditional, assertMsg?: string): void;

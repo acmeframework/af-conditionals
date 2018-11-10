@@ -1,8 +1,9 @@
 import { Conditional } from "../conditionals";
-import { Logical } from "./logical";
+import { Logical, LogicalTuple } from "./logical";
 export declare class Or extends Logical {
-    constructor(newAssertMsg?: string);
     protected stopTesting(result: boolean): boolean;
     protected _test(lhsValue: any, lhs: Conditional | undefined, rhsValue: any, rhs: Conditional): boolean;
 }
-export declare let or: Or;
+export declare let orInstance: Or;
+export declare function or(operands: LogicalTuple[]): boolean;
+export declare function assert_or(operands: LogicalTuple[], assertMsg?: string): void;
