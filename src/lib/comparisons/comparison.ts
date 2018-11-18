@@ -36,7 +36,7 @@ export class Comparison {
         }
         const result = this.compare(value1, value2, strict);
         let expected = false;
-        // tslint:disable-next-line
+        // tslint:disable-next-line:array-type
         for (const aResult of (expectedResult as Array<number>)) {
             expected = expected || result === aResult;
             if (expected) break;
