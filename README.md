@@ -40,6 +40,10 @@ if (isUsable(someVar)) {
 
 The assert method was moved out of base classes and made very generic across all Comparisons, Conditionals, and Logicals.
 
+### v0.3.0
+
+Added `IsFalsey` and `IsTruthy` Conditionals.
+
 ## Comparisons
 
 The `Comparison` class provides a `compare` and `test` public methods.
