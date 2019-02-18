@@ -1,6 +1,6 @@
-import "mocha";
+import 'mocha';
 
-import { expect } from "chai";
+import { expect } from 'chai';
 
 import {
     and,
@@ -8,18 +8,18 @@ import {
     isEmptyInstance,
     isStringInstance,
     isUsableInstance,
-} from "../../../src/lib";
+} from '../../../src/lib';
 
 // tslint:disable:no-unused-expression
 
-describe("Tests logical And class", function() {
-    describe("Tests the functionality of the class", function() {
-        it("tests the assert_and method", function() {
+describe('Tests logical And class', function() {
+    describe('Tests the functionality of the class', function() {
+        it('tests the assert_and method', function() {
             expect(function() {
                 assert_and([
                     {
                         condition: isUsableInstance,
-                        value: "Hello"
+                        value: 'Hello'
                     },
                     {
                         condition: isStringInstance
@@ -31,7 +31,7 @@ describe("Tests logical And class", function() {
                 assert_and([
                     {
                         condition: isUsableInstance,
-                        value: "Hello"
+                        value: 'Hello'
                     },
                     {
                         condition: isStringInstance
@@ -43,11 +43,11 @@ describe("Tests logical And class", function() {
             }).to.throw(TypeError);
         });
 
-        it("tests the and function", function() {
+        it('tests the and function', function() {
             expect(and([
                 {
                     condition: isUsableInstance,
-                    value: "Hello"
+                    value: 'Hello'
                 },
                 {
                     condition: isStringInstance

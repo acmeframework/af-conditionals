@@ -1,8 +1,11 @@
-import { assert_conditional, Conditional } from "./conditional";
+import typeDetect = require('type-detect');
+
+import { assert_conditional, Conditional } from './conditional';
 
 export class IsString extends Conditional {
     public test(value: any): boolean {
-        return typeof value === "string";
+        const valueType = typeDetect(value);
+        return valueType === 'string' || valueType === 'String';
     }
 }
 
@@ -14,7 +17,7 @@ export function isString(value: any): boolean {
 
 export function assert_isString(
     value: any,
-    assertMsg = "is not a string."
+    assertMsg = 'is not a string.'
 ): void {
     assert_conditional(value, isStringInstance, assertMsg);
 }

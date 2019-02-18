@@ -1,4 +1,4 @@
-import { isArray, isNumber, isObject, isString } from "../conditionals";
+import { isArray, isNumber, isObject, isString } from '../conditionals';
 
 export const COMPARE_EQUAL = 0;
 export const COMPARE_GREATER_THAN = 1;
@@ -11,7 +11,7 @@ export class Comparison {
         if (typeof value1 === typeof value2) {
             if (isString(value1) || isNumber(value1)) {
                 return this._compareBasic(value1, value2, strict);
-            } else if (typeof value1 === "boolean") {
+            } else if (typeof value1 === 'boolean') {
                 return this._compareBoolean(value1, value2);
             } else if (isObject(value1)) {
                 return this._compareObject(value1, value2);
@@ -99,7 +99,7 @@ export function assert_comparison(
     value2: any,
     c: Comparison,
     expectedResult?: number | number[],
-    assertMsg = "Comparison did not meet expectations."
+    assertMsg = 'Comparison did not meet expectations.'
 ): void {
     if (!c.test(value1, value2, expectedResult)) {
         throw new TypeError(assertMsg);

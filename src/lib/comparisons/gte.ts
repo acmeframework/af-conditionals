@@ -3,7 +3,7 @@ import {
     COMPARE_EQUAL,
     COMPARE_GREATER_THAN,
     Comparison,
-} from "./comparison";
+} from './comparison';
 
 export class GreaterThanOrEqual extends Comparison {
     public test(value1: any, value2: any): boolean {

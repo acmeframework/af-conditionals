@@ -1,7 +1,7 @@
-import { assert_conditional, Conditional } from "./conditional";
-import { isNumber } from "./is-number";
-import { isString } from "./is-string";
-import { isUsable } from "./is-usable";
+import { assert_conditional, Conditional } from './conditional';
+import { isNumber } from './is-number';
+import { isString } from './is-string';
+import { isUsable } from './is-usable';
 
 export class IsEmpty extends Conditional {
 
@@ -21,7 +21,7 @@ export class IsEmpty extends Conditional {
     }
 
     protected isStringEmpty(value: string): boolean {
-        return value === "";
+        return value === '';
     }
 }
 
@@ -33,7 +33,7 @@ export function isEmpty(value: any): boolean {
 
 export function assert_isEmpty(
     value: any,
-    assertMsg = "is not empty."
+    assertMsg = 'is not empty.'
 ): void {
     assert_conditional(value, isEmptyInstance, assertMsg);
 }

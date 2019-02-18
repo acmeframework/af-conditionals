@@ -1,8 +1,10 @@
-import { assert_conditional, Conditional } from "./conditional";
+import typeDetect from 'type-detect';
+
+import { assert_conditional, Conditional } from './conditional';
 
 export class IsUndefinedOrNull extends Conditional {
     public test(value: any): boolean {
-        return typeof value === "undefined" || value === null;
+        return typeDetect(value) === 'undefined' || value === null;
     }
 }
 
@@ -14,7 +16,7 @@ export function isUndefinedOrNull(value: any): boolean {
 
 export function assert_isUndefinedOrNull(
     value: any,
-    assertMsg = "is not undefined or null."
+    assertMsg = 'is not undefined or null.'
 ): void {
     assert_conditional(value, isUndefinedOrNullInstance, assertMsg);
 }

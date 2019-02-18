@@ -20,7 +20,7 @@ This is the initial alpha release version. The code has been thoroughly tested w
 
 ### v0.2.0
 
-This release changes the calling methods from using `XXXX.test()` methods to hiding that test within an exported function from which the classes are actually used. For example:
+- This release changes the calling methods from using `XXXX.test()` methods to hiding that test within an exported function from which the classes are actually used. For example:
 
 In v0.1.0, you would write code like this:
 
@@ -38,11 +38,18 @@ if (isUsable(someVar)) {
 }
 ```
 
-The assert method was moved out of base classes and made very generic across all Comparisons, Conditionals, and Logicals.
+- The assert method was moved out of base classes and made very generic across all Comparisons, Conditionals, and Logicals.
 
 ### v0.3.0
 
-Added `IsFalsey` and `IsTruthy` Conditionals.
+- Added `IsFalsey` and `IsTruthy` Conditionals.
+
+### v0.3.1
+
+- Updated Conditionals to use [type-detect](https://github.com/chaijs/type-detect) package.
+- Updated dependent packages (dev dependencies)
+- Updated tsconfig.json to be cleaner (both master src and tests), and to produce js output in dist instead of build
+- Updated package.json for NPM publishing
 
 ## Comparisons
 
@@ -114,7 +121,7 @@ Supplied Operators are:
 
 ## The MIT License
 
-Copyright &copy; 2018 Acme Framework
+Copyright &copy; 2019 Acme Framework
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

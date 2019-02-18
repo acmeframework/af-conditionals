@@ -1,6 +1,6 @@
-import "mocha";
+import 'mocha';
 
-import { expect } from "chai";
+import { expect } from 'chai';
 
 import {
     assert_logical,
@@ -10,7 +10,7 @@ import {
     isUsable,
     isUsableInstance,
     Logical,
-} from "../../../src/lib";
+} from '../../../src/lib';
 
 // tslint:disable:no-unused-expression
 
@@ -26,9 +26,9 @@ class TestLogical extends Logical {
     }
 }
 
-describe("Logical Class", function() {
-    describe("Tests the functionality of the class", function() {
-        it("Tests the assert/test methods", function() {
+describe('Logical Class', function() {
+    describe('Tests the functionality of the class', function() {
+        it('Tests the assert/test methods', function() {
             const tl = new TestLogical();
 
             expect(tl).to.be.an.instanceof(TestLogical);
@@ -36,12 +36,12 @@ describe("Logical Class", function() {
                 assert_logical([
                     {
                         condition: isUsableInstance,
-                        value: "Hello"
+                        value: 'Hello'
                     },
                     {
                         condition: isStringInstance
                     }
-                ], tl, "What???");
+                ], tl, 'What???');
             }).to.not.throw();
 
             expect(function() {
@@ -60,7 +60,7 @@ describe("Logical Class", function() {
                 assert_logical([
                     {
                         condition: isUsableInstance,
-                        value: "Hello"
+                        value: 'Hello'
                     },
                     {
                         condition: isEmptyInstance
@@ -72,7 +72,7 @@ describe("Logical Class", function() {
                 assert_logical([
                     {
                         condition: isUsableInstance,
-                        value: "Hello"
+                        value: 'Hello'
                     },
                     {
                         condition: isStringInstance
@@ -89,7 +89,7 @@ describe("Logical Class", function() {
 
             expect(function() {
                 // @ts-ignore
-                assert_logical("Nope", tl);
+                assert_logical('Nope', tl);
             }).to.throw(TypeError);
         });
     });

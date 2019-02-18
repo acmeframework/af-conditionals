@@ -1,11 +1,11 @@
-import { expect } from "chai";
+import { expect } from 'chai';
 
-import { assert_isEmpty, isEmpty, isEmptyInstance } from "../../../src/lib";
+import { assert_isEmpty, isEmpty, isEmptyInstance } from '../../../src/lib';
 import {
     TestConditional,
     testEmptyString,
     testString,
-} from "./conditional-tests";
+} from './conditional-tests';
 
 const testItemsResultsMap = [
     false, // string
@@ -22,24 +22,24 @@ const testItemsResultsMap = [
 
 // tslint:disable:no-unused-expression
 
-describe("IsEmpty class", function() {
+describe('IsEmpty class', function() {
 
-    describe("tests various values to determine if IsEmpty functions "
-        + "properly...",
+    describe('tests various values to determine if IsEmpty functions '
+        + 'properly...',
         function() {
             const tc = new TestConditional(
-                "isEmpty",
+                'isEmpty',
                 isEmptyInstance,
                 testItemsResultsMap
             );
             tc.test();
 
-            it("uses isEmpty (functoin) to test", function() {
+            it('uses isEmpty (functoin) to test', function() {
                 expect(isEmpty(testString)).to.be.false;
                 expect(isEmpty(testEmptyString)).to.be.true;
             });
 
-            it("uses assert_isEmpty to test", function() {
+            it('uses assert_isEmpty to test', function() {
                 expect(function() {
                     assert_isEmpty(testEmptyString);
                 }).to.not.throw();

@@ -1,4 +1,4 @@
-import { UnaryOperator } from "./unary-operator";
+import { UnaryOperator } from './unary-operator';
 
 export class Not extends UnaryOperator {
     public apply(value: any): boolean {

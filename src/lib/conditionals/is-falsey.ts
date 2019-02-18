@@ -1,4 +1,4 @@
-import { assert_conditional, Conditional } from "./conditional";
+import { assert_conditional, Conditional } from './conditional';
 
 export class IsFalsey extends Conditional {
     public test(value: any): boolean {
@@ -14,7 +14,7 @@ export function isFalsey(value: any): boolean {
 
 export function assert_isFalsey(
     value: any,
-    assertMsg = "is not falsey."
+    assertMsg = 'is not falsey.'
 ): void {
     assert_conditional(value, isFalseyInstance, assertMsg);
 }

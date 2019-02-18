@@ -1,7 +1,7 @@
-import { expect } from "chai";
+import { expect } from 'chai';
 
-import { assert_isArray, isArrayInstance } from "../../../src/lib";
-import { testArray, TestConditional, testString } from "./conditional-tests";
+import { assert_isArray, isArrayInstance } from '../../../src/lib';
+import { testArray, TestConditional, testString } from './conditional-tests';
 
 const testItemsResultsMap = [
     false, // string
@@ -16,18 +16,18 @@ const testItemsResultsMap = [
     false  // null
 ];
 
-describe("IsArray class", function() {
-    describe("tests various values to determine if IsArry functions "
-        + "properly...",
+describe('IsArray class', function() {
+    describe('tests various values to determine if IsArry functions '
+        + 'properly...',
         function() {
             const tc = new TestConditional(
-                "isArray",
+                'isArray',
                 isArrayInstance,
                 testItemsResultsMap
             );
             tc.test();
 
-            it("uses assert_isArray to test", function() {
+            it('uses assert_isArray to test', function() {
                 expect(function() {
                     assert_isArray(testArray);
                 }).to.not.throw();

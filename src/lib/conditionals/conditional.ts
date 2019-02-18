@@ -5,7 +5,7 @@ export abstract class Conditional {
 export function assert_conditional(
     value: any,
     c: Conditional,
-    assertMsg = "You condition was not met."
+    assertMsg = 'You condition was not met.'
 ): void {
     if (!c.test(value)) {
         throw new TypeError(`${value} ${assertMsg}`);

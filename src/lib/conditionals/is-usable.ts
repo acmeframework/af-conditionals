@@ -1,5 +1,5 @@
-import { assert_conditional, Conditional } from "./conditional";
-import { isUndefinedOrNull } from "./is-undefined-or-null";
+import { assert_conditional, Conditional } from './conditional';
+import { isUndefinedOrNull } from './is-undefined-or-null';
 
 export class IsUsable extends Conditional {
     public test(value: any): boolean {
@@ -15,7 +15,7 @@ export function isUsable(value: any): boolean {
 
 export function assert_isUsable(
     value: any,
-    assertMsg = "is not usable (it is undefined or null)."
+    assertMsg = 'is not usable (it is undefined or null).'
 ): void {
     assert_conditional(value, isUsableInstance, assertMsg);
 }

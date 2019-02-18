@@ -1,5 +1,5 @@
-import { Conditional, isUsable } from "../conditionals";
-import { assert_logical, Logical, LogicalTuple } from "./logical";
+import { Conditional, isUsable } from '../conditionals';
+import { assert_logical, Logical, LogicalTuple } from './logical';
 
 export class And extends Logical {
     protected _test(

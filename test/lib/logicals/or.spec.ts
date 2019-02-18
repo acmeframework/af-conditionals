@@ -1,6 +1,6 @@
-import "mocha";
+import 'mocha';
 
-import { expect } from "chai";
+import { expect } from 'chai';
 
 import {
     assert_or,
@@ -9,18 +9,18 @@ import {
     isNumberInstance,
     isStringInstance,
     or,
-} from "../../../src/lib";
+} from '../../../src/lib';
 
 // tslint:disable:no-unused-expression
 
-describe("Tests logical Or class", function() {
-    describe("Tests the functionality of the class", function() {
-        it("tests the assert/test methods", function() {
+describe('Tests logical Or class', function() {
+    describe('Tests the functionality of the class', function() {
+        it('tests the assert/test methods', function() {
             expect(function() {
                 assert_or([
                     {
                         condition: isNumberInstance,
-                        value: "Hello"
+                        value: 'Hello'
                     },
                     {
                         condition: isStringInstance
@@ -32,7 +32,7 @@ describe("Tests logical Or class", function() {
                 assert_or([
                     {
                         condition: isEmptyInstance,
-                        value: "Hello"
+                        value: 'Hello'
                     },
                     {
                         condition: isNumberInstance
@@ -44,11 +44,11 @@ describe("Tests logical Or class", function() {
             }).to.throw(TypeError);
         });
 
-        it("tests using the or function", function() {
+        it('tests using the or function', function() {
             expect(or([
                 {
                     condition: isNumberInstance,
-                    value: "Hello"
+                    value: 'Hello'
                 },
                 {
                     condition: isStringInstance

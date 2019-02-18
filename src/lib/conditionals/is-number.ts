@@ -1,8 +1,11 @@
-import { assert_conditional, Conditional } from "./conditional";
+import typeDetect from 'type-detect';
+
+import { assert_conditional, Conditional } from './conditional';
 
 export class IsNumber extends Conditional {
     public test(value: any): boolean {
-        return typeof value === "number";
+        const valueType = typeDetect(value);
+        return valueType === 'number' || valueType === 'Number';
     }
 }
 
@@ -14,7 +17,7 @@ export function isNumber(value: any): boolean {
 
 export function assert_isNumber(
     value: any,
-    assertMsg = "is not a number."
+    assertMsg = 'is not a number.'
 ): void {
     assert_conditional(value, isNumberInstance, assertMsg);
 }

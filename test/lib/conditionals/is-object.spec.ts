@@ -1,7 +1,7 @@
-import { expect } from "chai";
+import { expect } from 'chai';
 
-import { assert_isObject, isObjectInstance } from "../../../src/lib";
-import { TestConditional, testObject, testString } from "./conditional-tests";
+import { assert_isObject, isObjectInstance } from '../../../src/lib';
+import { TestConditional, testObject, testString } from './conditional-tests';
 
 const testItemsResultsMap = [
     false, // string
@@ -16,18 +16,18 @@ const testItemsResultsMap = [
     false  // null
 ];
 
-describe("IsObject class", function() {
-    describe("tests various values to determine if IsObject functions "
-        + "properly...",
+describe('IsObject class', function() {
+    describe('tests various values to determine if IsObject functions '
+        + 'properly...',
         function() {
             const tc = new TestConditional(
-                "isObject",
+                'isObject',
                 isObjectInstance,
                 testItemsResultsMap
             );
             tc.test();
 
-            it("uses assert_isObject to test", function() {
+            it('uses assert_isObject to test', function() {
                 expect(function() {
                     assert_isObject(testObject);
                 }).to.not.throw();

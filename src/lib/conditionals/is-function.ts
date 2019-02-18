@@ -1,10 +1,12 @@
-import { assert_conditional, Conditional } from "./conditional";
-import { isUsable } from "./is-usable";
+import typeDetect from 'type-detect';
+
+import { assert_conditional, Conditional } from './conditional';
+import { isUsable } from './is-usable';
 
 export class IsFunction extends Conditional {
     public test(value: any): boolean {
         return isUsable(value) &&
-            typeof value === "function";
+            typeDetect(value) === 'function';
     }
 }
 
@@ -16,7 +18,7 @@ export function isFunction(value: any): boolean {
 
 export function assert_isFunction(
     value: any,
-    assertMsg = "is not a Function."
+    assertMsg = 'is not a Function.'
 ): void {
     assert_conditional(value, isFunctionInstance, assertMsg);
 }

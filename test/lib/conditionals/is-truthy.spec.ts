@@ -1,12 +1,12 @@
-import { expect } from "chai";
+import { expect } from 'chai';
 
-import { assert_isTruthy, isTruthy, isTruthyInstance } from "../../../src/lib";
+import { assert_isTruthy, isTruthy, isTruthyInstance } from '../../../src/lib';
 import {
     TestConditional,
     testEmptyString,
     testNumber,
     testUndefined,
-} from "./conditional-tests";
+} from './conditional-tests';
 
 const testItemsResultsMap = [
     true,  // string
@@ -23,19 +23,19 @@ const testItemsResultsMap = [
 
 // tslint:disable:no-unused-expression
 
-describe("IsTruthy class", function() {
+describe('IsTruthy class', function() {
 
-    describe("tests various values to determine if IsTruthy functions "
-        + "properly...",
+    describe('tests various values to determine if IsTruthy functions '
+        + 'properly...',
         function() {
             const tc = new TestConditional(
-                "isTruthy",
+                'isTruthy',
                 isTruthyInstance,
                 testItemsResultsMap
             );
             tc.test();
 
-            it("uses assert_isTruthy to test", function() {
+            it('uses assert_isTruthy to test', function() {
                 expect(function() {
                     assert_isTruthy(testNumber);
                 }).to.not.throw();
@@ -47,8 +47,8 @@ describe("IsTruthy class", function() {
         }
     );
 
-    describe("tests the isTruthy function", function() {
-        it("uses the isTruthy function", function() {
+    describe('tests the isTruthy function', function() {
+        it('uses the isTruthy function', function() {
             expect(isTruthy(testNumber)).to.be.true;
             expect(isTruthy(testEmptyString)).to.be.false;
         });

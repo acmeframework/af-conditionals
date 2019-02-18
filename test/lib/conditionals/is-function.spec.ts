@@ -1,11 +1,11 @@
-import { expect } from "chai";
+import { expect } from 'chai';
 
-import { assert_isFunction, isFunctionInstance } from "../../../src/lib";
+import { assert_isFunction, isFunctionInstance } from '../../../src/lib';
 import {
     TestConditional,
     testFunction,
     testString,
-} from "./conditional-tests";
+} from './conditional-tests';
 
 const testItemsResultsMap = [
     false, // string
@@ -20,18 +20,18 @@ const testItemsResultsMap = [
     false  // null
 ];
 
-describe("IsFunction class", function() {
-    describe("tests various values to determine if IsFunction functions "
-        + "properly...",
+describe('IsFunction class', function() {
+    describe('tests various values to determine if IsFunction functions '
+        + 'properly...',
         function() {
             const tc = new TestConditional(
-                "isFunction",
+                'isFunction',
                 isFunctionInstance,
                 testItemsResultsMap
             );
             tc.test();
 
-            it("uses assert_isFunction to test", function() {
+            it('uses assert_isFunction to test', function() {
                 expect(function() {
                     assert_isFunction(testFunction);
                 }).to.not.throw();

@@ -1,4 +1,4 @@
-import { assert_comparison, COMPARE_EQUAL, Comparison } from "./comparison";
+import { assert_comparison, COMPARE_EQUAL, Comparison } from './comparison';
 
 export class Equal extends Comparison {
     public test(value1: any, value2: any): boolean {

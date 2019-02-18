@@ -2,7 +2,7 @@ import {
     assert_comparison,
     COMPARE_GREATER_THAN,
     Comparison,
-} from "./comparison";
+} from './comparison';
 
 export class GreaterThan extends Comparison {
 

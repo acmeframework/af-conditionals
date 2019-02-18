@@ -1,4 +1,4 @@
-import { Conditional, isArray, isUsable } from "../conditionals";
+import { Conditional, isArray, isUsable } from '../conditionals';
 
 export interface LogicalTuple {
     value?: any;
@@ -10,12 +10,12 @@ export abstract class Logical {
     public test(operands: LogicalTuple[]): boolean {
         if (!isArray(operands) || operands.length < 2) {
             throw new TypeError(
-                "A logical test requires at least two operands to test."
+                'A logical test requires at least two operands to test.'
             );
         }
         if (!isUsable(operands[0].value)) {
             throw new TypeError(
-                "You must supply at least one usable values to test."
+                'You must supply at least one usable values to test.'
             );
         }
 
@@ -50,7 +50,7 @@ export abstract class Logical {
 export function assert_logical(
     operands: LogicalTuple[],
     l: Logical,
-    assertMsg = "Your logical assertion is not true."
+    assertMsg = 'Your logical assertion is not true.'
 ): void {
     if (!l.test(operands)) {
         throw new TypeError(assertMsg);
