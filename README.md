@@ -51,6 +51,10 @@ if (isUsable(someVar)) {
 - Updated tsconfig.json to be cleaner (both master src and tests), and to produce js output in dist instead of build
 - Updated package.json for NPM publishing
 
+### v1.0.0
+
+- Official 1.0.0 release version
+
 ## Comparisons
 
 The `Comparison` class provides a `compare` and `test` public methods.
