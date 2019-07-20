@@ -2,7 +2,7 @@
 
 ## Status of Project
 
-[![Build Status](https://travis-ci.org/acmeframework/af-conditionals.svg?branch=master)](https://travis-ci.org/acmeframework/af-conditionals)  [![Coverage Status](https://coveralls.io/repos/github/acmeframework/af-conditionals/badge.svg?branch=master)](https://coveralls.io/github/acmeframework/af-conditionals?branch=master)
+[![Build Status](https://travis-ci.org/acmeframework/af-conditionals.svg?branch=master)](https://travis-ci.org/acmeframework/af-conditionals) [![Coverage Status](https://coveralls.io/repos/github/acmeframework/af-conditionals/badge.svg?branch=master)](https://coveralls.io/github/acmeframework/af-conditionals?branch=master)
 
 ## Purpose
 
@@ -10,7 +10,7 @@ The `af-conditionals` library was created to provide a consistent interface from
 
 ## Standard Calling Conventions
 
-All Comparisons, Conditionals, Logicals, and Operators expose the object class and a variable named after the class with the word *Instance* appended, but starting with a lowercase letter. For example: `IsString` is exposed as is `isStringInstance`. The `isStringInstance` variable is declared with a `let` so you may subclass the object and then use your version of your class throughout your application easily. Additionally, we expose a function that implements the testing for the class, for example, `IsString` has a exposed function `isString` that calls `isStringInstance.test()`. *(This is described in the Release Notes for v0.2.0.)*
+All Comparisons, Conditionals, Logicals, and Operators expose the object class and a variable named after the class with the word _Instance_ appended, but starting with a lowercase letter. For example: `IsString` is exposed as is `isStringInstance`. The `isStringInstance` variable is declared with a `let` so you may subclass the object and then use your version of your class throughout your application easily. Additionally, we expose a function that implements the testing for the class, for example, `IsString` has a exposed function `isString` that calls `isStringInstance.test()`. _(This is described in the Release Notes for v0.2.0.)_
 
 ## Release Notes
 
@@ -26,7 +26,7 @@ In v0.1.0, you would write code like this:
 
 ```javascript
 if (isUsable.test(someVar)) {
-    console.log("It is usable");
+  console.log('It is usable');
 }
 ```
 
@@ -34,7 +34,7 @@ Starting in v0.2.0, you can now simply say:
 
 ```javascript
 if (isUsable(someVar)) {
-    console.log("It is usable");
+  console.log('It is usable');
 }
 ```
 
@@ -65,12 +65,12 @@ The `compare` method takes two values and compares them returning:
 - 0 (zero) when the first value is equal to the second value
 - +1 (postive numeral one) when the first value is greater than the second value
 
-The `test` uses the `compare` method to get the result and then compare that result to an expected result that you supply. Compare returns:
+_When possible the `compare` method will compare the values using strict equals (`===`). When the values are not of the same type, `compare` will use coerced equality (`==`)._
+
+The `test` uses the `compare` method to get the result and then compare that result to an expected result that you supply. `test` returns:
 
 - `true` if the returned result and expected result are equal
 - `false` otherwise
-
-*When possible the `compare` method will compare the values using strict equals (`===`). When the values are not of the same type, `compare` will use coerced equality (`==`).*
 
 Supplied Comparisons are:
 
@@ -80,7 +80,7 @@ Supplied Comparisons are:
 - `LessThan` - determines if the first value is less than the second value
 - `LessThanOrEqual` - determines if the first value is less than or equal to the second value
 
-*Comparisons use shorthand calling function names instead of exposed functions of `equal`, `greaterThan`, etc... `eq`, `gt`, `gte`, `lt`, `lte` are exposed.*
+_Comparisons use shorthand calling function names instead of exposed functions of `equal`, `greaterThan`, etc... `eq`, `gt`, `gte`, `lt`, `lte` are exposed._
 
 ### `strict`
 
