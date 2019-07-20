@@ -55,6 +55,13 @@ if (isUsable(someVar)) {
 
 - Official 1.0.0 release version
 
+### v1.1.0
+
+- Updated dependencies
+- Updated package.json for consistent scripts across af-XXXX libraries
+- removed .vscode folder
+- Updated README.md
+
 ## Comparisons
 
 The `Comparison` class provides a `compare` and `test` public methods.
