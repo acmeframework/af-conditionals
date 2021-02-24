@@ -1,17 +1,32 @@
 {
   "name": "af-conditionals",
   "version": "1.3.0",
-  "description": "A simple conditional library.",
-  "main": "dist/lib/index.js",
+  "description": "A library that provides tools for making decisions in your code",
+  "keywords": [
+    "logic",
+    "decisions"
+  ],
+  "main": "build/lib/index.js",
   "scripts": {
-    "compile": "npm run lint && ./node_modules/.bin/tsc",
-    "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov | coveralls",
-    "dist": "npm test && npm run compile",
-    "lint": "./node_modules/.bin/tslint --project .",
-    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha"
+    "build": "npm run clean:all && npm run lint && npm run format:check && npm run test && npm run compile",
+    "clean:all": "npm run clean:build && npm run clean:reports",
+    "clean:build": "npx rimraf ./build/",
+    "clean:reports": "npx rimraf ./reports/",
+    "compile": "npx tsc",
+    "commit:check": "npm run build && npm run coverage:check",
+    "coverage": "npm nyc report --reporter=text-lcov | coveralls",
+    "coverage:check": "npx nyc report --check-coverage --branches 100 --functions 100 --statements 100 --lines 100",
+    "dist": "npm run build",
+    "fix": "npx eslint --fix '**/*.ts'",
+    "format": "npx prettier --write .",
+    "format:check": "npx prettier --check .",
+    "lint": "npx eslint '**/*.ts'",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "test": "npx nyc mocha --config ./test/.mocharc.json --reporter-options reportDir='./reports/testing'"
   },
   "files": [
-    "dist"
+    "build"
   ],
   "nyc": {
     "include": [
@@ -36,26 +51,32 @@
   "bugs": {
     "url": "https://github.com/acmeframework/af-conditionals/issues"
   },
-  "homepage": "https://github.com/acmeframework/af-conditionals",
+  "homepage": "https://github.com/acmeframework/af-conditionals#readme",
   "license": "MIT",
   "dependencies": {
-    "mocha": "^7.1.1",
+    "tslib": "^2.1.0",
     "type-detect": "^4.0.8"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.11",
-    "@types/mocha": "^7.0.2",
-    "@types/node": "^13.13.2",
-    "@types/sinon": "^9.0.0",
+    "@types/chai": "^4.2.15",
+    "@types/mocha": "^8.2.1",
+    "@types/node": "^14.14.31",
+    "@types/sinon": "^9.0.10",
     "@types/type-detect": "^4.0.1",
-    "chai": "^4.2.0",
-    "coveralls": "^3.0.13",
-    "mochawesome": "^6.1.0",
-    "nyc": "^15.0.1",
-    "sinon": "^9.0.2",
-    "source-map-support": "^0.5.18",
-    "ts-node": "^8.9.0",
-    "tslint": "^6.1.1",
-    "typescript": "^3.8.3"
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "chai": "^4.3.0",
+    "coveralls": "^3.1.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "mocha": "^8.3.0",
+    "mochawesome": "^6.2.2",
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1",
+    "sinon": "^9.2.4",
+    "source-map-support": "^0.5.19",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
   }
 }

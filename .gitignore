@@ -1,7 +1,7 @@
 .vscode
 .nyc_output
+build
 dist
-docs
 node_modules
 reports
 
