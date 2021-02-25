@@ -8,6 +8,7 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    '@typescript-eslint/no-explicit-any': 0,
   },
 };
