@@ -9,9 +9,10 @@
   "main": "build/lib/index.js",
   "scripts": {
     "build": "npm run clean:all && npm run ready:check && npm run compile",
-    "clean:all": "npm run clean:build && npm run clean:reports",
+    "clean:all": "npm run clean:build && npm run clean:reports && npm run clean:coverage",
     "clean:build": "npx rimraf ./build/",
     "clean:reports": "npx rimraf ./reports/",
+    "clean:coverage": "npx rimraf ./.nyc_output/",
     "compile": "npx tsc",
     "commit:check": "npm run build",
     "coverage": "npm nyc report --reporter=text-lcov | coveralls",
