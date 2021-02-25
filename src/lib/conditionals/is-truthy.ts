@@ -1,20 +1,20 @@
 import { assert_conditional, Conditional } from './conditional';
 
 export class IsTruthy extends Conditional {
-    public test(value: any): boolean {
-        return !!value;
-    }
+  public test(value: any): boolean {
+    return !!value;
+  }
 }
 
-export let isTruthyInstance = new IsTruthy();
+export let isTruthyInstance = new IsTruthy(); // eslint-disable-line prefer-const
 
 export function isTruthy(value: any): boolean {
-    return isTruthyInstance.test(value);
+  return isTruthyInstance.test(value);
 }
 
 export function assert_isTruthy(
-    value: any,
-    assertMsg = 'is not truthy.'
+  value: any,
+  assertMsg = 'is not truthy.'
 ): void {
-    assert_conditional(value, isTruthyInstance, assertMsg);
+  assert_conditional(value, isTruthyInstance, assertMsg);
 }
