@@ -5,15 +5,7 @@ import { isUndefinedOrNull } from './is-undefined-or-null';
 
 export class IsArray extends Conditional {
   public test(value: any): boolean {
-<<<<<<< HEAD
     return !isUndefinedOrNull(value) && typeDetect(value) === 'Array';
-=======
-    return (
-      typeDetect(value) !== 'undefined' &&
-      value !== null &&
-      typeDetect(value) === 'Array'
-    );
->>>>>>> 8df2a3c... Migrated to eslint, reformatted w/Prettier
   }
 }
 
