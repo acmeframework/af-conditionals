@@ -2,7 +2,7 @@
 
 ## Status of Project
 
-[![Build Status](https://travis-ci.org/acmeframework/af-conditionals.svg?branch=master)](https://travis-ci.org/acmeframework/af-conditionals) [![Coverage Status](https://coveralls.io/repos/github/acmeframework/af-conditionals/badge.svg?branch=master)](https://coveralls.io/github/acmeframework/af-conditionals?branch=master)
+[![Build Status](https://github.com/acmeframework/af-conditionals/actions/workflows/build-test.yml/badge.svg)](https://github.com/acmeframework/af-conditionals/actions/workflows/build-test.yml) [![Coverage Status](https://coveralls.io/repos/github/acmeframework/af-conditionals/badge.svg?branch=main)](https://coveralls.io/github/acmeframework/af-conditionals?branch=main)
 
 ## Purpose
 
