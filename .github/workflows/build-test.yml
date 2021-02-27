@@ -24,7 +24,7 @@ jobs:
         run: npm run format:check
 
       - name: Run tests
-        run: npm tests
+        run: npm test
 
       - name: Check coverall
         run: npm run coverage:check
