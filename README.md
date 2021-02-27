@@ -2,7 +2,7 @@
 
 ## Status of Project
 
-[![Build Status](https://travis-ci.org/acmeframework/af-conditionals.svg?branch=master)](https://travis-ci.org/acmeframework/af-conditionals) [![Coverage Status](https://coveralls.io/repos/github/acmeframework/af-conditionals/badge.svg?branch=master)](https://coveralls.io/github/acmeframework/af-conditionals?branch=master)
+[![Build Status](https://github.com/acmeframework/af-conditionals/actions/workflows/build-test.yml/badge.svg)](https://github.com/acmeframework/af-conditionals/actions/workflows/build-test.yml) [![Coverage Status](https://coveralls.io/repos/github/acmeframework/af-conditionals/badge.svg?branch=main)](https://coveralls.io/github/acmeframework/af-conditionals?branch=main)
 
 ## Purpose
 
@@ -12,56 +12,6 @@ The `af-conditionals` library was created to provide a consistent interface from
 
 All Comparisons, Conditionals, Logicals, and Operators expose the object class and a variable named after the class with the word _Instance_ appended, but starting with a lowercase letter. For example: `IsString` is exposed as is `isStringInstance`. The `isStringInstance` variable is declared with a `let` so you may subclass the object and then use your version of your class throughout your application easily. Additionally, we expose a function that implements the testing for the class, for example, `IsString` has a exposed function `isString` that calls `isStringInstance.test()`. _(This is described in the Release Notes for v0.2.0.)_
 
-## Release Notes
-
-### v0.1.0
-
-This is the initial alpha release version. The code has been thoroughly tested with 100% coverage. However, the packaging is still under development so a NPM module has not been published.
-
-### v0.2.0
-
-- This release changes the calling methods from using `XXXX.test()` methods to hiding that test within an exported function from which the classes are actually used. For example:
-
-In v0.1.0, you would write code like this:
-
-```javascript
-if (isUsable.test(someVar)) {
-  console.log('It is usable');
-}
-```
-
-Starting in v0.2.0, you can now simply say:
-
-```javascript
-if (isUsable(someVar)) {
-  console.log('It is usable');
-}
-```
-
-- The assert method was moved out of base classes and made very generic across all Comparisons, Conditionals, and Logicals.
-
-### v0.3.0
-
-- Added `IsFalsey` and `IsTruthy` Conditionals.
-
-### v0.3.1
-
-- Updated Conditionals to use [type-detect](https://github.com/chaijs/type-detect) package.
-- Updated dependent packages (dev dependencies)
-- Updated tsconfig.json to be cleaner (both master src and tests), and to produce js output in dist instead of build
-- Updated package.json for NPM publishing
-
-### v1.0.0
-
-- Official 1.0.0 release version
-
-### v1.1.0
-
-- Updated dependencies
-- Updated package.json for consistent scripts across af-XXXX libraries
-- removed .vscode folder
-- Updated README.md
-
 ## Comparisons
 
 The `Comparison` class provides a `compare` and `test` public methods.
@@ -70,7 +20,7 @@ The `compare` method takes two values and compares them returning:
 
 - -1 (negative numeral one) when the first value is less than the second value
 - 0 (zero) when the first value is equal to the second value
-- +1 (postive numeral one) when the first value is greater than the second value
+- +1 (positive numeral one) when the first value is greater than the second value
 
 _When possible the `compare` method will compare the values using strict equals (`===`). When the values are not of the same type, `compare` will use coerced equality (`==`)._
 
@@ -91,7 +41,7 @@ _Comparisons use shorthand calling function names instead of exposed functions o
 
 ### `strict`
 
-Both the `compare` and `test` methods take an optional parameter `strict` that defaults to `true`. When the comparison is between two string values the `strict` parameter is used to indicate if the comparison should be case-insensative or not. When `strict` is `true` the comparison is made taking case into account (i.e. capital letters are greater than lowercase letters).
+Both the `compare` and `test` methods take an optional parameter `strict` that defaults to `true`. When the comparison is between two string values the `strict` parameter is used to indicate if the comparison should be case-insensitive or not. When `strict` is `true` the comparison is made taking case into account (i.e. capital letters are greater than lowercase letters).
 
 ## Conditionals
 
@@ -113,7 +63,7 @@ Supplied Conditionals are:
 - `IsUndefinedOrNull` - determines if a value is undefined or null
 - `IsUsable` - inverts IsUndefinedOrNull to determine if a value is "usable"
 
-The majority of the conditionals use `typeof` to determine if a value is of a particular type or not and use noncoerced equality to test the type.
+The majority of the conditionals use `typeof` to determine if a value is of a particular type or not and use non-coerced equality to test the type.
 
 ## Logicals
 
@@ -128,14 +78,6 @@ Supplied Operators are:
 
 - `Not` - performs a boolean NOT on the supplied value (which will be cast into truthy or falsey)
 
-## [Support Issues](https://github.com/acmeframework/af-conditionals/issues)
+## Support
 
-## The MIT License
-
-Copyright &copy; 2019 Acme Framework
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+To share your comments, provide suggestions, or raise issues, create an [issue](https://github.com/acmeframework/af-conditionals/issues).

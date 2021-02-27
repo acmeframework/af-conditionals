@@ -9,7 +9,7 @@ export class IsArray extends Conditional {
   }
 }
 
-export let isArrayInstance = new IsArray();
+export let isArrayInstance = new IsArray(); // eslint-disable-line prefer-const
 
 export function isArray(value: any): boolean {
   return isArrayInstance.test(value);

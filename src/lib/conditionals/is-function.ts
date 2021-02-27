@@ -4,21 +4,20 @@ import { assert_conditional, Conditional } from './conditional';
 import { isUsable } from './is-usable';
 
 export class IsFunction extends Conditional {
-    public test(value: any): boolean {
-        return isUsable(value) &&
-            typeDetect(value) === 'function';
-    }
+  public test(value: any): boolean {
+    return isUsable(value) && typeDetect(value) === 'function';
+  }
 }
 
-export let isFunctionInstance = new IsFunction();
+export let isFunctionInstance = new IsFunction(); // eslint-disable-line prefer-const
 
 export function isFunction(value: any): boolean {
-    return isFunctionInstance.test(value);
+  return isFunctionInstance.test(value);
 }
 
 export function assert_isFunction(
-    value: any,
-    assertMsg = 'is not a Function.'
+  value: any,
+  assertMsg = 'is not a Function.'
 ): void {
-    assert_conditional(value, isFunctionInstance, assertMsg);
+  assert_conditional(value, isFunctionInstance, assertMsg);
 }
