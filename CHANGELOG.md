@@ -64,3 +64,7 @@ if (isUsable(someVar)) {
 - Reformat all code with Prettier
 - Update app dependencies to the latest versions, update configs as needed
 - Update package.json scripts to better support a consistent build process and better commits
+
+### Fixes
+
+- v1.3.1 - Corrected two typos in `publish.yml`
