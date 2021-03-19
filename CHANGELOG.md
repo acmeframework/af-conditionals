@@ -68,3 +68,4 @@ if (isUsable(someVar)) {
 ### Fixes
 
 - v1.3.1 - Corrected two typos in `publish.yml`
+- v1.3.2 - Fix `types` key in `publish.yml` - correct release processing
